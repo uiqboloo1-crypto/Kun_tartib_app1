@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kunlik Tartib</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome ikonkalari -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1><i class="fa-solid fa-calendar-check"></i> Kunlik Tartib</h1>
+    <div class="controls">
+      <button id="addTaskBtn"><i class="fa-solid fa-plus"></i> Vazifa</button>
+      <button id="exportBtn"><i class="fa-solid fa-file-export"></i> Eksport</button>
+      <button id="importBtn"><i class="fa-solid fa-file-import"></i> Import</button>
+      <input type="file" id="fileInput" accept=".json" style="display:none">
+    </div>
+  </header>
+
+  <main>
+    <!-- Yangi vazifa qo'shish -->
+    <section class="new-task" id="newTaskSection" hidden>
+      <h2><i class="fa-solid fa-pen-to-square"></i> Yangi vazifa</h2>
+      <form id="taskForm">
+        <label>Vazifa nomi
+          <input type="text" id="title" required placeholder="Masalan: Sport qilish">
+        </label>
+        <label>Sana va vaqt
+          <input type="datetime-local" id="datetime">
+        </label>
+        <label>Prioritet
+          <select id="priority">
+            <option value="normal">Oddiy</option>
+            <option value="high">Muhim</option>
+            <option value="low">Kam ahamiyat</option>
+          </select>
+        </label>
+        <label>Izoh
+          <textarea id="notes" rows="3" placeholder="Batafsil izoh..."></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit"><i class="fa-solid fa-save"></i> Saqlash</button>
+          <button type="button" id="cancelBtn"><i class="fa-solid fa-xmark"></i> Bekor qilish</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filter va qidirish -->
+    <section class="filters">
+      <input type="search" id="search" placeholder="🔍 Qidirish...">
+      <select id="filter">
+        <option value="all">Hammasi</option>
+        <option value="today">Bugun</option>
+        <option value="tomorrow">Ertaga</option>
+        <option value="overdue">Kechikkan</option>
+        <option value="completed">Bajarilgan</option>
+      </select>
+      <select id="sort">
+        <option value="time">⏰ Vaqt bo‘yicha</option>
+        <option value="priority">⭐ Prioritet bo‘yicha</option>
+        <option value="title">🔠 Nomi bo‘yicha</option>
+      </select>
+    </section>
+
+    <!-- Vazifalar ro'yxati -->
+    <section id="tasksList" class="tasks-list"></section>
+  </main>
+
+  <!-- Template -->
+  <template id="taskTpl">
+    <article class="task">
+      <div class="left">
+        <input type="checkbox" class="doneChk">
+      </div>
+      <div class="center">
+        <h3 class="taskTitle"></h3>
+        <p class="taskMeta"></p>
+        <p class="taskNotes"></p>
+      </div>
+      <div class="right">
+        <button class="editBtn" title="Tahrirlash"><i class="fa-solid fa-pen"></i></button>
+        <button class="deleteBtn" title="O'chirish"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </article>
+  </template>
+
+  <footer>
+    <small><i class="fa-solid fa-circle-info"></i> Ma’lumotlar brauzeringizda saqlanadi (localStorage).</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
