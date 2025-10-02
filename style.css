@@ -1,60 +1,35 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  margin: 0;
-  padding: 16px;
-  min-height: 100vh;
-  background: url('9D3C736B-C4FB-45EE-88C0-1DCD384524CC.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
+/* Umumiy ikonka uslubi */
+i {
+  font-size: 1.3rem;   /* barcha ikonlarni kattalashtiradi */
+  vertical-align: middle;
 }
 
-/* Gradient overlay */
-body::before {
-  content: "";
-  position: absolute;
-  top:0;left:0;right:0;bottom:0;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(6px);
-  z-index:-1;
+/* Header tugmalari uchun ikonka */
+.controls button i {
+  font-size: 1.2rem;
+  margin-right: 6px;  /* matndan ajratish */
 }
 
-header, .new-task, .filters, .task, footer {
-  animation: fadeIn 0.8s ease;
+/* Formadagi tugmalar */
+.form-actions button i {
+  font-size: 1.2rem;
+  margin-right: 6px;
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(10px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* Tugmalar animatsiyasi */
-.controls button, .form-actions button {
-  transition: all 0.3s ease;
-}
-.controls button:hover, .form-actions button:hover {
-  transform: scale(1.07);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* Inputlar fokus animatsiyasi */
-input:focus, textarea:focus, select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-  outline: none;
+/* Vazifa kartasidagi tugmalar (edit/delete) */
+.task .right button i {
+  font-size: 1.3rem;
+  color: var(--accent);
   transition: 0.3s;
 }
-
-/* Task kartalar */
-.task {
-  animation: slideIn 0.6s ease;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.task:hover {
-  transform: scale(1.02) translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+.task .right button:hover i {
+  transform: scale(1.3);
+  color: var(--danger);
 }
 
-@keyframes slideIn {
-  from {opacity:0; transform:translateX(-30px);}
-  to {opacity:1; transform:translateX(0);}
+/* Checkbox yonidagi ikonka (agar ishlatilsa) */
+.taskMeta i {
+  font-size: 1.1rem;
+  margin-right: 4px;
+  color: var(--muted);
 }
